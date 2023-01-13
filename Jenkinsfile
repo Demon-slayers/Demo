@@ -12,7 +12,7 @@ pipeline {
             junit '**/target/*.xml'
         }
         failure {
-            mail to: thisiswasimnc@gmail.com, subject: 'The Pipeline failed :('
+           emailext body: 'Your Build is successful', subject: 'Build is successfull', to: 'thisiswasimnc@gmail.com'
         }
     }
 }
