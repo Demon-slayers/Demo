@@ -1,18 +1,21 @@
 pipeline {
     agent any
+
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                sh 'make check'
+                echo 'Building..'
             }
         }
-    }
-    post {
-        always {
-            junit '**/target/*.xml'
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
         }
-        failure {
-           emailext body: 'Your Build is successful', subject: 'Build is successfull', to: 'thisiswasimnc@gmail.com'
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
         }
     }
 }
