@@ -16,6 +16,13 @@ pipeline {
             steps {
                 echo 'Deploying is happening....'
             }
+          
+        }
+        
+    }
+    post{
+        always{
+        emailext body: 'Summary', replyTo: 'thisiswasimnc@gmail.com', subject: 'Jenkins Pipeline', to: 'thisiswasimnc@gmail.com'
         }
     }
 }
